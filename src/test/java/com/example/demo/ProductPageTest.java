@@ -10,6 +10,8 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class ProductPageTest {
 
+    ProductPage productPage = new ProductPage();
+
     @BeforeAll
     public static void setUpAll() {
         Configuration.browserSize = "1280x800";
@@ -22,8 +24,6 @@ public class ProductPageTest {
         open("https://vk.com/club225299895?w=product-225299895_10044406");
         productPage.waitUntilCardIsLoaded();
     }
-
-    ProductPage productPage = new ProductPage();
 
     @DisplayName("Проверка названия товара!")
     @Test

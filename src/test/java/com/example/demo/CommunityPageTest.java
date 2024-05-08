@@ -14,6 +14,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class CommunityPageTest {
 
+  CommunityPage communityPage = new CommunityPage();
+  String expectedLoginPageUrl = "https://vk.com/login";
+
   @BeforeAll
   public static void setUpAll() {
     Configuration.browserSize = "2560x1600";
@@ -26,8 +29,6 @@ public class CommunityPageTest {
     open("https://vk.com/club225299895");
     communityPage.waitUntilCommunityPageIsLoaded();
   }
-
-  CommunityPage communityPage = new CommunityPage();
 
   @Order(1)
   @DisplayName("Проверка названия Сообщества!")
@@ -66,7 +67,6 @@ public class CommunityPageTest {
     communityPage
         .clickFollowButton()
         .waitUntilCommunityPageIsDisappeared();
-    String expectedLoginPageUrl = "https://vk.com/login";
     String currentUrl = url();
     assert currentUrl.contains(expectedLoginPageUrl) :
         "Ожидал переход на login страницу, но перешел на " + currentUrl;
@@ -78,7 +78,6 @@ public class CommunityPageTest {
     communityPage
         .clickFollowersLabel()
         .waitUntilCommunityPageIsDisappeared();
-    String expectedLoginPageUrl = "https://vk.com/login";
     String currentUrl = url();
     assert currentUrl.contains(expectedLoginPageUrl) :
         "Ожидал переход на login страницу, но перешел на " + currentUrl;
@@ -86,13 +85,13 @@ public class CommunityPageTest {
 
   @DisplayName("Проверка перехода на страницу с услугами, после клика на кнопку 'показать все'!")
   @Test
-  public void checkRedirectionToLoginPageAfterClickShowAllServicesButton() {
+  public void checkRedirectionToUslugiPageAfterClickShowAllServicesButton() {
     communityPage
         .clickShowAllServicesButton()
         .waitUntilCommunityPageIsDisappeared();
-    String expectedLoginPageUrl = "https://vk.com/uslugi";
+    String expectedUslugiPageUrl = "https://vk.com/uslugi";
     String currentUrl = url();
-    assert currentUrl.contains(expectedLoginPageUrl) :
+    assert currentUrl.contains(expectedUslugiPageUrl) :
         "Ожидал переход на страницу с услугами, но перешел на " + currentUrl;
   }
 }
